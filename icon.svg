@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#7F77DD"/>
+  <rect width="512" height="512" rx="112" fill="#EEEDFE" opacity="0.08"/>
+
+  <!-- Símbolo âncora estilizado -->
+  <!-- Círculo do topo -->
+  <circle cx="256" cy="148" r="36" fill="none" stroke="#fff" stroke-width="22"/>
+
+  <!-- Haste vertical -->
+  <line x1="256" y1="184" x2="256" y2="360" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+
+  <!-- Barra horizontal -->
+  <line x1="176" y1="210" x2="336" y2="210" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+
+  <!-- Braços curvos da âncora -->
+  <path d="M256 360 Q190 360 170 310" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+  <path d="M256 360 Q322 360 342 310" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+
+  <!-- Pontas dos braços -->
+  <circle cx="163" cy="300" r="16" fill="#fff"/>
+  <circle cx="349" cy="300" r="16" fill="#fff"/>
+
+  <!-- Brilho sutil no topo -->
+  <ellipse cx="256" cy="120" rx="180" ry="60" fill="#fff" opacity="0.06"/>
+</svg>

@@ -1,0 +1,18 @@
+{
+  "name": "Âncora — Finanças Pessoais",
+  "short_name": "Âncora",
+  "description": "Seu app de finanças pessoais",
+  "start_url": "/ancora-financas/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7F77DD",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
