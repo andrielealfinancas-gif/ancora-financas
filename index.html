@@ -60,7 +60,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 .lanc-nome{font-size:14px;color:#1a1a2e;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lanc-cat{font-size:12px;color:#aaa}
 .lanc-val{font-size:14px;font-weight:700;flex-shrink:0}
-.lanc-del{background:none;border:none;color:#ddd;cursor:pointer;font-size:20px;padding:4px;flex-shrink:0}
+.lanc-actions{display:flex;gap:2px;flex-shrink:0}
+.lanc-edit,.lanc-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:18px;padding:4px}
+.lanc-edit:hover{color:#7F77DD}
 .lanc-del:hover{color:#E24B4A}
 .empty-state{padding:48px 20px;text-align:center;color:#bbb;font-size:15px}
 .empty-state i{font-size:48px;display:block;margin-bottom:10px;color:#ddd}
@@ -78,6 +80,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 .meta-card{margin:12px 20px 0;background:#fff;border:1px solid #f0effe;border-radius:16px;padding:16px;position:relative}
 .meta-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
 .meta-nome{font-size:15px;font-weight:600;color:#1a1a2e;margin-bottom:3px}
+.meta-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:2px 8px;border-radius:99px;background:#EEEDFE;color:#534AB7;margin-bottom:5px}
 .meta-sub{font-size:12px;color:#aaa}
 .meta-pct{font-size:22px;font-weight:700;color:#7F77DD}
 .meta-bar-bg{background:#f0effe;border-radius:99px;height:8px;margin:12px 0 5px;overflow:hidden}
@@ -105,23 +108,25 @@ input:focus,select:focus{border-color:#7F77DD}
 .month-select{display:flex;align-items:center;gap:8px;padding:10px 20px;border-bottom:1px solid #f0effe;flex-shrink:0}
 .month-select select{flex:1;padding:8px 12px;font-size:14px}
 .month-nav{background:none;border:none;color:#7F77DD;font-size:24px;cursor:pointer;padding:4px}
-.divida-subtabs{display:flex;gap:8px;padding:12px 20px;border-bottom:1px solid #f0effe;flex-shrink:0}
-.dsub{flex:1;padding:9px 0;text-align:center;border-radius:10px;border:1px solid #ddd;background:#fff;font-size:13px;color:#888;cursor:pointer;font-family:inherit;font-weight:600}
-.dsub.active{background:#7F77DD;border-color:#7F77DD;color:#fff}
 .divida-card{margin:12px 20px 0;background:#fff;border:1px solid #f0effe;border-radius:16px;padding:16px;position:relative}
 .divida-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
 .divida-nome{font-size:15px;font-weight:600;color:#1a1a2e;margin-bottom:3px}
 .divida-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:2px 8px;border-radius:99px;background:#EEEDFE;color:#534AB7;margin-bottom:5px}
 .divida-sub{font-size:12px;color:#aaa}
 .divida-pct{font-size:20px;font-weight:700;color:#7F77DD}
-.divida-del{position:absolute;top:14px;right:14px;background:none;border:none;color:#ddd;cursor:pointer;font-size:20px}
-.divida-del:hover{color:#E24B4A}
+.divida-actions{position:absolute;top:14px;right:14px;display:flex;gap:2px}
 .divida-info-row{display:flex;gap:14px;margin-top:8px;font-size:11px;color:#888;flex-wrap:wrap}
 .divida-info-row span{font-weight:600;color:#534AB7}
+.main-tabs{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid #f0effe;flex-shrink:0;background:#fafaff}
+.mtab{flex:1;padding:10px 4px;text-align:center;border-radius:12px;border:none;background:transparent;font-size:12px;color:#888;cursor:pointer;font-family:inherit;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px}
+.mtab i{font-size:18px}
+.mtab.active{background:#7F77DD;color:#fff}
+.subview{display:none}
+.subview.active{display:block}
 .carteira-tabs{display:flex;gap:8px;padding:12px 20px;border-bottom:1px solid #f0effe;flex-shrink:0;overflow-x:auto}
 .ctab{flex-shrink:0;padding:7px 16px;border-radius:99px;border:1px solid #ddd;background:#fff;font-size:13px;color:#888;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:5px}
 .ctab.active{background:#7F77DD;border-color:#7F77DD;color:#fff}
-.carteira-card{margin:12px 20px 0;border-radius:16px;padding:18px;position:relative;color:#fff;overflow:hidden}
+.carteira-card{margin:14px 20px 0;border-radius:16px;padding:18px;position:relative;color:#fff;overflow:hidden}
 .carteira-top{display:flex;justify-content:space-between;align-items:flex-start}
 .carteira-nome{font-size:16px;font-weight:700}
 .carteira-datas{font-size:11px;opacity:.85;margin-top:2px}
@@ -130,7 +135,6 @@ input:focus,select:focus{border-color:#7F77DD}
 .carteira-limite-bar-bg{background:rgba(255,255,255,.25);border-radius:99px;height:7px;margin-top:12px;overflow:hidden}
 .carteira-limite-bar-fill{height:100%;border-radius:99px;background:#fff}
 .carteira-limite-txt{font-size:10px;opacity:.85;margin-top:5px;display:flex;justify-content:space-between}
-.carteira-del{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.2);border:none;color:#fff;cursor:pointer;font-size:16px;padding:5px 7px;border-radius:8px}
 .score-card{margin:14px 20px 0;border-radius:18px;padding:18px 20px;display:flex;align-items:center;gap:16px}
 .score-ring{position:relative;width:72px;height:72px;flex-shrink:0}
 .score-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
@@ -174,6 +178,22 @@ input:focus,select:focus{border-color:#7F77DD}
 .import-review-cat select{padding:6px 8px;font-size:12px}
 .import-checkbox{flex-shrink:0;width:18px;height:18px;accent-color:#7F77DD}
 .file-input-hidden{display:none}
+.invest-card{margin:12px 20px 0;background:#fff;border:1px solid #f0effe;border-radius:16px;padding:16px;cursor:pointer}
+.invest-top{display:flex;justify-content:space-between;align-items:flex-start}
+.invest-nome{font-size:15px;font-weight:600;color:#1a1a2e}
+.invest-tag{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;padding:2px 8px;border-radius:99px;background:#EEEDFE;color:#534AB7;margin-top:4px}
+.invest-rent{text-align:right}
+.invest-rent-val{font-size:16px;font-weight:700}
+.invest-rent-val.pos{color:#3B6D11}
+.invest-rent-val.neg{color:#A32D2D}
+.invest-rent-lbl{font-size:10px;color:#aaa}
+.invest-valor-atual{font-size:22px;font-weight:700;color:#1a1a2e;margin-top:10px}
+.invest-resumo-row{display:flex;justify-content:space-between;font-size:11px;color:#888;margin-top:6px}
+.invest-mov-item{display:flex;align-items:center;padding:10px 20px;border-bottom:1px solid #f8f8f8;gap:10px}
+.invest-mov-tag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:99px;flex-shrink:0}
+.invest-mov-tag.aporte{background:#EAF3DE;color:#3B6D11}
+.invest-mov-tag.retirada{background:#FCEBEB;color:#A32D2D}
+.invest-mov-tag.rendimento{background:#EEEDFE;color:#534AB7}
 .auth-screen{display:none;flex-direction:column;flex:1;justify-content:center;padding:32px 28px;overflow-y:auto}
 .auth-screen.active{display:flex}
 .auth-logo{text-align:center;margin-bottom:8px;font-size:32px}
@@ -342,25 +362,73 @@ input:focus,select:focus{border-color:#7F77DD}
     </div>
   </div>
 
+  <!-- TELA LANÇAMENTOS/CARTÕES/INVESTIMENTOS COM ABAS INTERNAS -->
   <div class="screen" id="s-lanc">
     <div class="s-header">
-      <h2>Lançamentos</h2>
+      <h2 id="lanc-screen-title">Finanças</h2>
       <p id="lanc-period-label">—</p>
     </div>
-    <div class="carteira-tabs" id="carteira-tabs"></div>
-    <div class="period-tabs" id="lanc-tabs">
-      <button class="ptab active" onclick="setPeriod('mensal',this)">Mensal</button>
-      <button class="ptab" onclick="setPeriod('semestral',this)">Semestral</button>
-      <button class="ptab" onclick="setPeriod('anual',this)">Anual</button>
+    <div class="main-tabs">
+      <button class="mtab active" id="mtab-lancamentos" onclick="setMainTab('lancamentos')"><i class="ti ti-list"></i>Lançamentos</button>
+      <button class="mtab" id="mtab-cartoes" onclick="setMainTab('cartoes')"><i class="ti ti-credit-card"></i>Cartões</button>
+      <button class="mtab" id="mtab-investimentos" onclick="setMainTab('investimentos')"><i class="ti ti-chart-line"></i>Investimentos</button>
+    </div>
+
+    <!-- SUBVIEW: LANÇAMENTOS -->
+    <div class="subview active" id="subview-lancamentos">
+      <div class="carteira-tabs" id="carteira-tabs"></div>
+      <div class="period-tabs" id="lanc-tabs">
+        <button class="ptab active" onclick="setPeriod('mensal',this)">Mensal</button>
+        <button class="ptab" onclick="setPeriod('semestral',this)">Semestral</button>
+        <button class="ptab" onclick="setPeriod('anual',this)">Anual</button>
+      </div>
+      <div class="lanc-toolbar">
+        <button class="btn-tool btn-primary" onclick="openModal('modal-new')"><i class="ti ti-plus"></i> Novo</button>
+        <button class="btn-tool" onclick="openModal('modal-cat')"><i class="ti ti-tag"></i> Categorias</button>
+        <button class="btn-tool" onclick="openModal('modal-carteira')"><i class="ti ti-wallet"></i> Carteiras</button>
+        <button class="btn-tool" onclick="openModalImport()"><i class="ti ti-upload"></i> Importar</button>
+      </div>
+      <div id="carteira-resumo"></div>
+      <div id="lanc-list"></div>
+    </div>
+
+    <!-- SUBVIEW: CARTÕES -->
+    <div class="subview" id="subview-cartoes">
+      <div class="lanc-toolbar">
+        <button class="btn-tool btn-primary" onclick="abrirModalCarteiraComoCartao()"><i class="ti ti-plus"></i> Novo cartão</button>
+      </div>
+      <div id="cartoes-list"></div>
+    </div>
+
+    <!-- SUBVIEW: INVESTIMENTOS -->
+    <div class="subview" id="subview-investimentos">
+      <div id="invest-summary" class="chart-card" style="margin:14px 20px 0"></div>
+      <div class="lanc-toolbar">
+        <button class="btn-tool btn-primary" onclick="openModal('modal-invest')"><i class="ti ti-plus"></i> Novo investimento</button>
+      </div>
+      <div id="invest-list"></div>
+    </div>
+  </div>
+
+  <!-- TELA DETALHE INVESTIMENTO -->
+  <div class="screen" id="s-invest-detalhe">
+    <div class="s-header" style="display:flex;align-items:center;gap:10px">
+      <button class="btn-tool" style="padding:7px 10px" onclick="nav('lanc')"><i class="ti ti-arrow-left"></i></button>
+      <div>
+        <h2 id="invest-detalhe-nome">Investimento</h2>
+        <p id="invest-detalhe-sub">—</p>
+      </div>
+    </div>
+    <div id="invest-detalhe-resumo" class="chart-card" style="margin:14px 20px 0"></div>
+    <div class="chart-card" style="margin:14px 20px 0">
+      <div style="position:relative;width:100%;height:160px"><canvas id="investChart"></canvas></div>
     </div>
     <div class="lanc-toolbar">
-      <button class="btn-tool btn-primary" onclick="openModal('modal-new')"><i class="ti ti-plus"></i> Novo</button>
-      <button class="btn-tool" onclick="openModal('modal-cat')"><i class="ti ti-tag"></i> Categorias</button>
-      <button class="btn-tool" onclick="openModal('modal-carteira')"><i class="ti ti-wallet"></i> Carteiras</button>
-      <button class="btn-tool" onclick="openModal('modal-import')"><i class="ti ti-upload"></i> Importar</button>
+      <button class="btn-tool btn-primary" onclick="abrirModalMovimento('aporte')"><i class="ti ti-plus"></i> Aporte</button>
+      <button class="btn-tool" onclick="abrirModalMovimento('retirada')"><i class="ti ti-minus"></i> Retirada</button>
+      <button class="btn-tool" onclick="abrirModalMovimento('rendimento')"><i class="ti ti-trending-up"></i> Rendimento</button>
     </div>
-    <div id="carteira-resumo"></div>
-    <div id="lanc-list"></div>
+    <div id="invest-mov-list"></div>
   </div>
 
   <div class="screen" id="s-orc">
@@ -376,6 +444,7 @@ input:focus,select:focus{border-color:#7F77DD}
     <div class="s-header"><h2>Dívidas</h2><p>Financiamentos, consórcios e empréstimos</p></div>
     <div class="lanc-toolbar">
       <button class="btn-tool btn-primary" onclick="openModal('modal-divida')"><i class="ti ti-plus"></i> Nova dívida</button>
+      <button class="btn-tool" onclick="openModal('modal-tipos-divida')"><i class="ti ti-tags"></i> Tipos</button>
     </div>
     <div id="divida-list"></div>
   </div>
@@ -395,7 +464,7 @@ input:focus,select:focus{border-color:#7F77DD}
 
   <nav class="bottom-nav" id="bottom-nav" style="display:none">
     <button class="nav-btn active" id="btn-dash" onclick="nav('dash')"><i class="ti ti-layout-dashboard"></i><span>Início</span></button>
-    <button class="nav-btn" id="btn-lanc" onclick="nav('lanc')"><i class="ti ti-list"></i><span>Lanç.</span></button>
+    <button class="nav-btn" id="btn-lanc" onclick="nav('lanc')"><i class="ti ti-list"></i><span>Finanças</span></button>
     <button class="nav-btn" id="btn-orc" onclick="nav('orc')"><i class="ti ti-chart-pie"></i><span>Orçam.</span></button>
     <button class="nav-btn" id="btn-divida" onclick="nav('divida')"><i class="ti ti-file-invoice"></i><span>Dívidas</span></button>
     <button class="nav-btn" id="btn-meta" onclick="nav('meta')"><i class="ti ti-target"></i><span>Metas</span></button>
@@ -414,7 +483,8 @@ input:focus,select:focus{border-color:#7F77DD}
 
   <div class="modal-bg" id="modal-new">
     <div class="modal-box">
-      <div class="modal-title">Novo lançamento <button class="modal-close" onclick="closeModal('modal-new')"><i class="ti ti-x"></i></button></div>
+      <div class="modal-title" id="modal-new-title">Novo lançamento <button class="modal-close" onclick="closeModal('modal-new')"><i class="ti ti-x"></i></button></div>
+      <input type="hidden" id="new-edit-id" value="">
       <div class="field-lbl">Descrição</div>
       <input type="text" id="new-desc" placeholder="Ex: Mercado, Salário...">
       <div class="two-col">
@@ -444,7 +514,7 @@ input:focus,select:focus{border-color:#7F77DD}
   <div class="modal-bg" id="modal-cat">
     <div class="modal-box">
       <div class="modal-title">Categorias <button class="modal-close" onclick="closeModal('modal-cat')"><i class="ti ti-x"></i></button></div>
-      <div class="cat-chips" id="cat-list"></div>
+      <div id="cat-list"></div>
       <div style="display:flex;gap:8px;margin-top:8px">
         <input type="text" id="nova-cat" placeholder="Nova categoria...">
         <button class="btn-tool btn-primary" onclick="addCat()"><i class="ti ti-plus"></i></button>
@@ -456,7 +526,8 @@ input:focus,select:focus{border-color:#7F77DD}
     <div class="modal-box">
       <div class="modal-title">Carteiras <button class="modal-close" onclick="closeModal('modal-carteira')"><i class="ti ti-x"></i></button></div>
       <div id="carteira-modal-list" style="margin-bottom:14px"></div>
-      <div class="field-lbl" style="margin-top:0">Nova carteira</div>
+      <div class="field-lbl" style="margin-top:0" id="carteira-form-title">Nova carteira</div>
+      <input type="hidden" id="carteira-edit-id" value="">
       <input type="text" id="carteira-nome" placeholder="Ex: Nubank, Carteira física...">
       <div class="field-lbl">Tipo</div>
       <div style="display:flex;gap:8px">
@@ -479,7 +550,7 @@ input:focus,select:focus{border-color:#7F77DD}
         <button class="chip" data-cor="#BA7517" style="background:#BA7517;color:#fff;border-color:#BA7517" onclick="selCorCarteira('#BA7517',this)">Dourado</button>
         <button class="chip" data-cor="#3B6D11" style="background:#3B6D11;color:#fff;border-color:#3B6D11" onclick="selCorCarteira('#3B6D11',this)">Verde</button>
       </div>
-      <button class="btn-tool btn-primary" style="width:100%;justify-content:center;padding:10px;margin-top:12px" onclick="salvarCarteira()"><i class="ti ti-check"></i> Salvar carteira</button>
+      <button class="btn-tool btn-primary" style="width:100%;justify-content:center;padding:10px;margin-top:12px" id="btn-salvar-carteira" onclick="salvarCarteira()"><i class="ti ti-check"></i> Salvar carteira</button>
     </div>
   </div>
 
@@ -541,6 +612,11 @@ input:focus,select:focus{border-color:#7F77DD}
   <div class="modal-bg" id="modal-meta">
     <div class="modal-box">
       <div class="modal-title">Nova meta <button class="modal-close" onclick="closeModal('modal-meta')"><i class="ti ti-x"></i></button></div>
+      <div class="field-lbl">Tipo</div>
+      <div style="display:flex;gap:8px">
+        <button class="chip sel" id="meta-tipo-objetivo" onclick="selTipoMeta('objetivo')"><i class="ti ti-target"></i> Objetivo</button>
+        <button class="chip" id="meta-tipo-reserva" onclick="selTipoMeta('reserva_emergencia')"><i class="ti ti-shield-check"></i> Reserva de emergência</button>
+      </div>
       <div class="field-lbl">Nome da meta</div>
       <input type="text" id="meta-nome" placeholder="Ex: Viagem para Europa">
       <div class="two-col">
@@ -565,13 +641,7 @@ input:focus,select:focus{border-color:#7F77DD}
     <div class="modal-box">
       <div class="modal-title">Nova dívida <button class="modal-close" onclick="closeModal('modal-divida')"><i class="ti ti-x"></i></button></div>
       <div class="field-lbl">Tipo de dívida</div>
-      <select id="divida-tipo">
-        <option value="financiamento">Financiamento</option>
-        <option value="emprestimo">Empréstimo</option>
-        <option value="consorcio">Consórcio</option>
-        <option value="divida_pf">Dívida com pessoa física</option>
-        <option value="outro">Outro</option>
-      </select>
+      <select id="divida-tipo"></select>
       <div class="field-lbl">Nome</div>
       <input type="text" id="divida-nome" placeholder="Ex: Financiamento do carro">
       <div class="two-col">
@@ -589,6 +659,52 @@ input:focus,select:focus{border-color:#7F77DD}
       <button class="btn-tool btn-primary" style="width:100%;justify-content:center;padding:10px;margin-top:12px" onclick="salvarDivida()"><i class="ti ti-check"></i> Salvar dívida</button>
     </div>
   </div>
+
+  <div class="modal-bg" id="modal-tipos-divida">
+    <div class="modal-box">
+      <div class="modal-title">Tipos de dívida <button class="modal-close" onclick="closeModal('modal-tipos-divida')"><i class="ti ti-x"></i></button></div>
+      <div id="tipos-divida-list" style="margin-bottom:10px"></div>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="novo-tipo-divida" placeholder="Ex: Cheque especial...">
+        <button class="btn-tool btn-primary" onclick="addTipoDivida()"><i class="ti ti-plus"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-bg" id="modal-invest">
+    <div class="modal-box">
+      <div class="modal-title">Novo investimento <button class="modal-close" onclick="closeModal('modal-invest')"><i class="ti ti-x"></i></button></div>
+      <div class="field-lbl">Nome</div>
+      <input type="text" id="invest-nome" placeholder="Ex: Tesouro Selic, Ações XP...">
+      <div class="field-lbl">Tipo</div>
+      <select id="invest-tipo">
+        <option value="renda_fixa">Renda Fixa</option>
+        <option value="acoes">Ações</option>
+        <option value="fundos">Fundos</option>
+        <option value="cripto">Criptomoedas</option>
+        <option value="previdencia">Previdência</option>
+        <option value="outro">Outro</option>
+      </select>
+      <div class="field-lbl">Corretora (opcional)</div>
+      <input type="text" id="invest-corretora" placeholder="Ex: XP, Nubank, Rico...">
+      <div class="field-lbl">Aporte inicial (R$)</div>
+      <input type="number" id="invest-aporte-inicial" placeholder="0,00" step="0.01">
+      <div class="field-lbl">Data do aporte</div>
+      <input type="date" id="invest-data-inicial">
+      <button class="btn-tool btn-primary" style="width:100%;justify-content:center;padding:10px;margin-top:12px" onclick="salvarInvestimento()"><i class="ti ti-check"></i> Salvar investimento</button>
+    </div>
+  </div>
+
+  <div class="modal-bg" id="modal-movimento">
+    <div class="modal-box">
+      <div class="modal-title" id="modal-movimento-title">Aporte <button class="modal-close" onclick="closeModal('modal-movimento')"><i class="ti ti-x"></i></button></div>
+      <div class="field-lbl">Valor (R$)</div>
+      <input type="number" id="movimento-val" placeholder="0,00" step="0.01">
+      <div class="field-lbl">Data</div>
+      <input type="date" id="movimento-data">
+      <button class="btn-tool btn-primary" style="width:100%;justify-content:center;padding:10px;margin-top:12px" id="btn-salvar-movimento" onclick="salvarMovimento()"><i class="ti ti-check"></i> Salvar</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -598,12 +714,22 @@ var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 var MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 var CAT_COLORS = ['#7F77DD','#5DCAA5','#F0997B','#ED93B1','#85B7EB','#97C459','#B4B2A9','#FAC775','#E24B4A','#534AB7'];
-var TIPO_DIVIDA_LABELS = { financiamento: 'Financiamento', emprestimo: 'Empréstimo', consorcio: 'Consórcio', divida_pf: 'Dívida c/ pessoa física', outro: 'Outro' };
+var TIPO_DIVIDA_DEFAULT = [
+  { id: 'financiamento', nome: 'Financiamento' },
+  { id: 'emprestimo', nome: 'Empréstimo' },
+  { id: 'consorcio', nome: 'Consórcio' },
+  { id: 'divida_pf', nome: 'Dívida c/ pessoa física' },
+  { id: 'outro', nome: 'Outro' }
+];
+var INVEST_TIPO_LABELS = { renda_fixa: 'Renda Fixa', acoes: 'Ações', fundos: 'Fundos', cripto: 'Cripto', previdencia: 'Previdência', outro: 'Outro' };
 
 var currentUser = null;
 var importedItems = [];
-var pieChartInst = null, barChartInst = null, compChartInst = null;
+var pieChartInst = null, barChartInst = null, compChartInst = null, investChartInst = null;
 var lancCarteiraFiltro = 'todas';
+var currentMainTab = 'lancamentos';
+var currentInvestId = null;
+var currentMovimentoTipo = 'aporte';
 
 var state = {
   lancamentos: [],
@@ -612,6 +738,9 @@ var state = {
   metas: [],
   dividas: [],
   carteiras: [],
+  tiposDivida: TIPO_DIVIDA_DEFAULT.slice(),
+  investimentos: [],
+  movimentos: [],
   currentMonth: new Date().getMonth(),
   currentYear: new Date().getFullYear(),
   lancPeriod: 'mensal',
@@ -619,7 +748,8 @@ var state = {
   tipoSel: 'entrada',
   catSel: 'Renda',
   corCarteiraSel: '#7F77DD',
-  tipoCarteiraSel: 'conta'
+  tipoCarteiraSel: 'conta',
+  tipoMetaSel: 'objetivo'
 };
 
 function fmt(v) {
@@ -735,6 +865,7 @@ async function doLogout() {
   showAuth('login');
 }
 
+// ===== CARREGAMENTO DE DADOS (com proteção contra duplicação) =====
 async function loadUserData() {
   if (!currentUser) return;
 
@@ -744,10 +875,15 @@ async function loadUserData() {
   document.getElementById('perfil-nome').textContent = (profile && profile.nome) || '—';
   document.getElementById('perfil-email').textContent = currentUser.email;
 
+  // CATEGORIAS - busca, remove duplicados visuais, só cria padrão se realmente vazio
   var catsRes = await sb.from('categorias').select('*').eq('user_id', currentUser.id).order('created_at');
-  var cats = catsRes.data;
-  if (cats && cats.length) {
-    state.categorias = cats.map(function(c){ return c.nome; });
+  var cats = catsRes.data || [];
+  if (cats.length) {
+    var seenCat = {};
+    state.categorias = [];
+    cats.forEach(function(c){
+      if (!seenCat[c.nome]) { seenCat[c.nome] = true; state.categorias.push(c.nome); }
+    });
   } else {
     var defaults = ['Moradia','Alimentação','Saúde','Lazer','Transporte','Beleza','Educação','Renda','Outros'];
     for (var di = 0; di < defaults.length; di++) {
@@ -756,9 +892,17 @@ async function loadUserData() {
     state.categorias = defaults;
   }
 
+  // CARTEIRAS - busca, remove duplicados visuais (mantém a mais antiga "padrão"), só cria se vazio
   var carteirasRes = await sb.from('carteiras').select('*').eq('user_id', currentUser.id).order('created_at');
-  state.carteiras = (carteirasRes.data || []).map(function(c){
-    return { id: c.id, nome: c.nome, tipo: c.tipo, cor: c.cor || '#7F77DD', limite: c.limite ? parseFloat(c.limite) : null, fechamento: c.dia_fechamento, vencimento: c.dia_vencimento, padrao: c.padrao };
+  var carteirasRaw = carteirasRes.data || [];
+  var seenCarteira = {};
+  state.carteiras = [];
+  carteirasRaw.forEach(function(c){
+    var key = c.nome + '|' + c.tipo;
+    if (!seenCarteira[key]) {
+      seenCarteira[key] = true;
+      state.carteiras.push({ id: c.id, nome: c.nome, tipo: c.tipo, cor: c.cor || '#7F77DD', limite: c.limite ? parseFloat(c.limite) : null, fechamento: c.dia_fechamento, vencimento: c.dia_vencimento, padrao: c.padrao });
+    }
   });
 
   if (!state.carteiras.length) {
@@ -779,7 +923,7 @@ async function loadUserData() {
 
   var metasRes = await sb.from('metas').select('*').eq('user_id', currentUser.id).order('created_at');
   state.metas = (metasRes.data || []).map(function(m){
-    return { id: m.id, nome: m.nome, total: parseFloat(m.valor_total), atual: parseFloat(m.valor_atual), prazo: m.prazo, periodo: m.periodo };
+    return { id: m.id, nome: m.nome, total: parseFloat(m.valor_total), atual: parseFloat(m.valor_atual), prazo: m.prazo, periodo: m.periodo, tipoMeta: m.tipo_meta || 'objetivo' };
   });
 
   var dividasRes = await sb.from('dividas').select('*').eq('user_id', currentUser.id).order('created_at');
@@ -791,11 +935,26 @@ async function loadUserData() {
       inicio: d.data_inicio, fim: d.data_previsao_fim
     };
   });
-}
 
-function getCarteiraPadrao() {
-  for (var i = 0; i < state.carteiras.length; i++) if (state.carteiras[i].padrao) return state.carteiras[i];
-  return state.carteiras[0] || null;
+  // garante que tipos de dívida usados nos dados existentes apareçam na lista, mesmo se customizados
+  var tiposVistos = {};
+  state.tiposDivida.forEach(function(t){ tiposVistos[t.id] = true; });
+  state.dividas.forEach(function(d){
+    if (!tiposVistos[d.tipo]) {
+      tiposVistos[d.tipo] = true;
+      state.tiposDivida.push({ id: d.tipo, nome: d.tipo });
+    }
+  });
+
+  var investRes = await sb.from('investimentos').select('*').eq('user_id', currentUser.id).order('created_at');
+  state.investimentos = (investRes.data || []).map(function(i){
+    return { id: i.id, nome: i.nome, tipo: i.tipo, corretora: i.corretora };
+  });
+
+  var movRes = await sb.from('movimentacoes_investimento').select('*').eq('user_id', currentUser.id).order('data');
+  state.movimentos = (movRes.data || []).map(function(m){
+    return { id: m.id, investimentoId: m.investimento_id, tipo: m.tipo, valor: parseFloat(m.valor), data: m.data };
+  });
 }
 
 function getCarteiraById(id) {
@@ -852,7 +1011,6 @@ function getLancForPeriod(period, month, year) {
   });
 }
 
-// só lançamentos de contas (não cartão) afetam o saldo "líquido" do mês
 function isCarteiraCartao(carteiraId) {
   var c = getCarteiraById(carteiraId);
   return c && c.tipo === 'cartao';
@@ -913,7 +1071,7 @@ function calcularScore(receitas, gastos, saldo) {
     motivos.push(orcamentosUltrapassados + ' categoria(s) com orçamento ultrapassado');
   }
 
-  var temReserva = state.metas.some(function(m){ return /reserva|emerg/i.test(m.nome) && m.atual > 0; });
+  var temReserva = state.metas.some(function(m){ return m.tipoMeta === 'reserva_emergencia' && m.atual > 0; });
   if (temReserva) score += 5;
 
   score = Math.max(0, Math.min(100, Math.round(score)));
@@ -1001,7 +1159,7 @@ function getMediaGastosMensais() {
 
 function getMetaReserva() {
   for (var i = 0; i < state.metas.length; i++) {
-    if (/reserva|emerg/i.test(state.metas[i].nome)) return state.metas[i];
+    if (state.metas[i].tipoMeta === 'reserva_emergencia') return state.metas[i];
   }
   return null;
 }
@@ -1036,6 +1194,7 @@ function renderReserva() {
 }
 
 function abrirModalMetaReserva() {
+  selTipoMeta('reserva_emergencia');
   document.getElementById('meta-nome').value = 'Reserva de emergência';
   document.getElementById('meta-periodo').value = 'anual';
   openModal('modal-meta');
@@ -1135,7 +1294,6 @@ function renderDash() {
   var m = state.currentMonth, y = state.currentYear;
   var lancs = getLancForPeriod('mensal', m, y);
 
-  // saldo/receitas/gastos consideram só carteiras tipo "conta" (cartão entra como fatura separada)
   var lancsConta = lancs.filter(function(l){ return !isCarteiraCartao(l.carteiraId); });
   var receitas = lancsConta.filter(function(l){ return l.tipo === 'entrada'; }).reduce(function(a, l){ return a + l.valor; }, 0);
   var gastos = lancsConta.filter(function(l){ return l.tipo === 'saida'; }).reduce(function(a, l){ return a + l.valor; }, 0);
@@ -1153,7 +1311,6 @@ function renderDash() {
   renderProjecao();
   renderDica(receitas, gastos, saldo);
 
-  // categorias consideram todos os gastos (conta + cartão), pois é visão de consumo real
   var catGastos = {};
   lancs.filter(function(l){ return l.tipo === 'saida'; }).forEach(function(l){ catGastos[l.categoria] = (catGastos[l.categoria] || 0) + l.valor; });
   var maiorCatArr = Object.entries(catGastos).sort(function(a,b){ return b[1]-a[1]; });
@@ -1217,6 +1374,28 @@ function renderDash() {
   });
 }
 
+// ===== ABAS PRINCIPAIS DA TELA FINANÇAS =====
+function setMainTab(tab) {
+  currentMainTab = tab;
+  document.getElementById('mtab-lancamentos').classList.toggle('active', tab === 'lancamentos');
+  document.getElementById('mtab-cartoes').classList.toggle('active', tab === 'cartoes');
+  document.getElementById('mtab-investimentos').classList.toggle('active', tab === 'investimentos');
+  document.getElementById('subview-lancamentos').classList.toggle('active', tab === 'lancamentos');
+  document.getElementById('subview-cartoes').classList.toggle('active', tab === 'cartoes');
+  document.getElementById('subview-investimentos').classList.toggle('active', tab === 'investimentos');
+
+  var labels = { lancamentos: 'Lançamentos por carteira', cartoes: 'Faturas e limites', investimentos: 'Sua carteira de investimentos' };
+  document.getElementById('lanc-period-label').textContent = labels[tab];
+
+  if (tab === 'lancamentos') { renderCarteiraTabs(); renderCarteiraResumo(); renderLanc(); buildCarteiraSelectNew(); }
+  if (tab === 'cartoes') renderCartoesList();
+  if (tab === 'investimentos') renderInvestimentos();
+}
+
+function renderLancScreen() {
+  setMainTab(currentMainTab);
+}
+
 // ===== LANÇAMENTOS / CARTEIRAS =====
 function setPeriod(p, btn) {
   state.lancPeriod = p;
@@ -1226,19 +1405,12 @@ function setPeriod(p, btn) {
   renderLanc();
 }
 
-function renderLancScreen() {
-  renderCarteiraTabs();
-  renderCarteiraResumo();
-  renderLanc();
-  buildCarteiraSelectNew();
-}
-
 function renderCarteiraTabs() {
   var el = document.getElementById('carteira-tabs');
+  var contas = state.carteiras.filter(function(c){ return c.tipo === 'conta'; });
   var html = '<button class="ctab' + (lancCarteiraFiltro === 'todas' ? ' active' : '') + '" onclick="selCarteiraFiltro(\'todas\')">Todas</button>';
-  state.carteiras.forEach(function(c){
-    var icon = c.tipo === 'cartao' ? 'ti-credit-card' : 'ti-cash';
-    html += '<button class="ctab' + (lancCarteiraFiltro === c.id ? ' active' : '') + '" onclick="selCarteiraFiltro(\'' + c.id + '\')"><i class="ti ' + icon + '"></i>' + c.nome + '</button>';
+  contas.forEach(function(c){
+    html += '<button class="ctab' + (lancCarteiraFiltro === c.id ? ' active' : '') + '" onclick="selCarteiraFiltro(\'' + c.id + '\')"><i class="ti ti-cash"></i>' + c.nome + '</button>';
   });
   el.innerHTML = html;
 }
@@ -1256,27 +1428,14 @@ function renderCarteiraResumo() {
   var c = getCarteiraById(lancCarteiraFiltro);
   if (!c) { el.innerHTML = ''; return; }
 
-  if (c.tipo === 'cartao') {
-    var fatura = getFaturaCarteira(c.id, state.currentMonth, state.currentYear);
-    var pct = c.limite > 0 ? Math.min(Math.round(fatura / c.limite * 100), 100) : 0;
-    el.innerHTML = '<div class="carteira-card" style="margin:14px 20px 0;background:linear-gradient(135deg, ' + c.cor + ', ' + c.cor + 'cc)">' +
-      '<div class="carteira-top"><div><div class="carteira-nome">' + c.nome + '</div>' +
-      '<div class="carteira-datas">Fecha dia ' + (c.fechamento || '—') + ' · Vence dia ' + (c.vencimento || '—') + '</div></div>' +
-      '<i class="ti ti-credit-card" style="font-size:26px;opacity:.7"></i></div>' +
-      '<div class="carteira-fatura-lbl">Fatura do mês</div><div class="carteira-fatura-val">' + fmt(fatura) + '</div>' +
-      (c.limite ? '<div class="carteira-limite-bar-bg"><div class="carteira-limite-bar-fill" style="width:' + pct + '%"></div></div>' +
-      '<div class="carteira-limite-txt"><span>' + pct + '% do limite</span><span>Limite: ' + fmt(c.limite) + '</span></div>' : '') +
-      '</div>';
-  } else {
-    var lancsConta = getLancForPeriod('mensal', state.currentMonth, state.currentYear).filter(function(l){ return l.carteiraId === c.id; });
-    var rec = lancsConta.filter(function(l){ return l.tipo === 'entrada'; }).reduce(function(a,l){ return a+l.valor; }, 0);
-    var gas = lancsConta.filter(function(l){ return l.tipo === 'saida'; }).reduce(function(a,l){ return a+l.valor; }, 0);
-    el.innerHTML = '<div class="carteira-card" style="margin:14px 20px 0;background:linear-gradient(135deg, ' + c.cor + ', ' + c.cor + 'cc)">' +
-      '<div class="carteira-top"><div><div class="carteira-nome">' + c.nome + '</div>' +
-      '<div class="carteira-datas">Conta / dinheiro</div></div><i class="ti ti-cash" style="font-size:26px;opacity:.7"></i></div>' +
-      '<div class="carteira-fatura-lbl">Saldo do mês</div><div class="carteira-fatura-val">' + fmt(rec - gas) + '</div>' +
-      '<div class="carteira-limite-txt"><span>Receitas: ' + fmt(rec) + '</span><span>Gastos: ' + fmt(gas) + '</span></div></div>';
-  }
+  var lancsConta = getLancForPeriod('mensal', state.currentMonth, state.currentYear).filter(function(l){ return l.carteiraId === c.id; });
+  var rec = lancsConta.filter(function(l){ return l.tipo === 'entrada'; }).reduce(function(a,l){ return a+l.valor; }, 0);
+  var gas = lancsConta.filter(function(l){ return l.tipo === 'saida'; }).reduce(function(a,l){ return a+l.valor; }, 0);
+  el.innerHTML = '<div class="carteira-card" style="background:linear-gradient(135deg, ' + c.cor + ', ' + c.cor + 'cc)">' +
+    '<div class="carteira-top"><div><div class="carteira-nome">' + c.nome + '</div>' +
+    '<div class="carteira-datas">Conta / dinheiro</div></div><i class="ti ti-cash" style="font-size:26px;opacity:.7"></i></div>' +
+    '<div class="carteira-fatura-lbl">Saldo do mês</div><div class="carteira-fatura-val">' + fmt(rec - gas) + '</div>' +
+    '<div class="carteira-limite-txt"><span>Receitas: ' + fmt(rec) + '</span><span>Gastos: ' + fmt(gas) + '</span></div></div>';
 }
 
 function renderLanc() {
@@ -1286,8 +1445,6 @@ function renderLanc() {
   }
   var sorted = lancs.slice().sort(function(a, b){ return new Date(b.data) - new Date(a.data); });
   var el = document.getElementById('lanc-list');
-  var labels = { mensal: MESES[state.currentMonth] + ' ' + state.currentYear, semestral: '2º Sem ' + state.currentYear, anual: state.currentYear };
-  document.getElementById('lanc-period-label').textContent = labels[state.lancPeriod] || '';
 
   if (!sorted.length) {
     el.innerHTML = '<div class="empty-state"><i class="ti ti-receipt-off"></i>Nenhum lançamento neste período</div>';
@@ -1308,7 +1465,10 @@ function renderLanc() {
       '<div class="lanc-ico" style="background:' + cor + '"><i class="ti ' + icon + '" style="color:' + icor + '"></i></div>' +
       '<div class="lanc-info"><div class="lanc-nome">' + l.desc + '</div><div class="lanc-cat">' + l.categoria + ' · ' + carteiraTxt + ' · ' + dataFmt + parcelaTxt + '</div></div>' +
       '<div class="lanc-val ' + clsName + '">' + sinal + fmt(l.valor) + '</div>' +
-      '<button class="lanc-del" onclick="delLanc(\'' + l.id + '\')"><i class="ti ti-trash"></i></button>' +
+      '<div class="lanc-actions">' +
+        '<button class="lanc-edit" onclick="abrirEdicaoLanc(\'' + l.id + '\')"><i class="ti ti-pencil"></i></button>' +
+        '<button class="lanc-del" onclick="delLanc(\'' + l.id + '\')"><i class="ti ti-trash"></i></button>' +
+      '</div>' +
     '</div>';
   }).join('');
 }
@@ -1343,7 +1503,35 @@ function selCat(c) {
   buildCatChips();
 }
 
+function abrirEdicaoLanc(id) {
+  var l = null;
+  for (var i = 0; i < state.lancamentos.length; i++) if (state.lancamentos[i].id === id) l = state.lancamentos[i];
+  if (!l) return;
+
+  document.getElementById('modal-new-title').firstChild.textContent = 'Editar lançamento ';
+  document.getElementById('new-edit-id').value = l.id;
+  document.getElementById('new-desc').value = l.desc;
+  document.getElementById('new-val').value = l.valor;
+  document.getElementById('new-data').value = l.data;
+  selTipo(l.tipo);
+  buildCarteiraSelectNew();
+  document.getElementById('new-carteira').value = l.carteiraId;
+  if (document.getElementById('new-carteira').onchange) document.getElementById('new-carteira').onchange();
+  buildCatChips();
+  selCat(l.categoria);
+  document.getElementById('new-parc-atual').value = l.parcelaAtual;
+  document.getElementById('new-parc-total').value = l.parcelaTotal;
+  openModal('modal-new');
+}
+
+function fecharModalNew() {
+  document.getElementById('modal-new-title').firstChild.textContent = 'Novo lançamento ';
+  document.getElementById('new-edit-id').value = '';
+  closeModal('modal-new');
+}
+
 async function salvarLanc() {
+  var editId = document.getElementById('new-edit-id').value;
   var desc = document.getElementById('new-desc').value.trim();
   var val = parseFloat(document.getElementById('new-val').value);
   var data = document.getElementById('new-data').value;
@@ -1356,18 +1544,33 @@ async function salvarLanc() {
   var btn = document.getElementById('btn-salvar-lanc');
   btn.disabled = true;
 
-  var result = await sb.from('lancamentos').insert({
-    user_id: currentUser.id, descricao: desc, valor: val, tipo: state.tipoSel, categoria: state.catSel, data: data,
+  var payload = {
+    descricao: desc, valor: val, tipo: state.tipoSel, categoria: state.catSel, data: data,
     carteira_id: carteiraId, parcela_atual: parcAtual, parcela_total: parcTotal
-  }).select().single();
+  };
+
+  var result;
+  if (editId) {
+    result = await sb.from('lancamentos').update(payload).eq('id', editId).eq('user_id', currentUser.id).select().single();
+  } else {
+    payload.user_id = currentUser.id;
+    result = await sb.from('lancamentos').insert(payload).select().single();
+  }
 
   btn.disabled = false;
 
   if (result.error) { alert('Erro ao salvar: ' + result.error.message); return; }
 
-  var inserted = result.data;
-  state.lancamentos.unshift({ id: inserted.id, desc: inserted.descricao, valor: parseFloat(inserted.valor), tipo: inserted.tipo, categoria: inserted.categoria, data: inserted.data, carteiraId: inserted.carteira_id, parcelaAtual: inserted.parcela_atual, parcelaTotal: inserted.parcela_total });
-  closeModal('modal-new');
+  var saved = result.data;
+  var novo = { id: saved.id, desc: saved.descricao, valor: parseFloat(saved.valor), tipo: saved.tipo, categoria: saved.categoria, data: saved.data, carteiraId: saved.carteira_id, parcelaAtual: saved.parcela_atual, parcelaTotal: saved.parcela_total };
+
+  if (editId) {
+    state.lancamentos = state.lancamentos.map(function(l){ return l.id === editId ? novo : l; });
+  } else {
+    state.lancamentos.unshift(novo);
+  }
+
+  fecharModalNew();
   document.getElementById('new-desc').value = '';
   document.getElementById('new-val').value = '';
   document.getElementById('new-parc-atual').value = 1;
@@ -1387,7 +1590,10 @@ async function delLanc(id) {
 
 function renderCatList() {
   document.getElementById('cat-list').innerHTML = state.categorias.map(function(c){
-    return '<button class="chip sel" onclick="delCat(\'' + c + '\')">' + c + ' <i class="ti ti-x" style="font-size:10px"></i></button>';
+    return '<div class="lanc-item" style="padding:8px 0">' +
+      '<div class="lanc-info"><input type="text" value="' + c + '" onblur="renomearCat(\'' + c + '\', this.value)" style="border:none;background:transparent;padding:4px 0;font-size:14px"></div>' +
+      '<button class="lanc-del" onclick="delCat(\'' + c + '\')"><i class="ti ti-trash"></i></button>' +
+    '</div>';
   }).join('');
 }
 
@@ -1403,6 +1609,29 @@ async function addCat() {
   inp.value = '';
 }
 
+async function renomearCat(nomeAntigo, nomeNovo) {
+  nomeNovo = nomeNovo.trim();
+  if (!nomeNovo || nomeNovo === nomeAntigo) return;
+  if (state.categorias.indexOf(nomeNovo) !== -1) { alert('Já existe uma categoria com esse nome.'); renderCatList(); return; }
+
+  var catRes = await sb.from('categorias').select('id').eq('user_id', currentUser.id).eq('nome', nomeAntigo).single();
+  if (catRes.data) {
+    await sb.from('categorias').update({ nome: nomeNovo }).eq('id', catRes.data.id);
+  }
+  // atualiza lançamentos e orçamentos que usavam o nome antigo
+  await sb.from('lancamentos').update({ categoria: nomeNovo }).eq('user_id', currentUser.id).eq('categoria', nomeAntigo);
+  await sb.from('orcamentos').update({ categoria: nomeNovo }).eq('user_id', currentUser.id).eq('categoria', nomeAntigo);
+
+  state.categorias = state.categorias.map(function(c){ return c === nomeAntigo ? nomeNovo : c; });
+  state.lancamentos.forEach(function(l){ if (l.categoria === nomeAntigo) l.categoria = nomeNovo; });
+  if (state.orcamentos[nomeAntigo] !== undefined) {
+    state.orcamentos[nomeNovo] = state.orcamentos[nomeAntigo];
+    delete state.orcamentos[nomeAntigo];
+  }
+  renderCatList();
+  buildCatChips();
+}
+
 async function delCat(c) {
   var catRes = await sb.from('categorias').select('id').eq('user_id', currentUser.id).eq('nome', c).single();
   if (catRes.data) await sb.from('categorias').delete().eq('id', catRes.data.id);
@@ -1411,7 +1640,7 @@ async function delCat(c) {
   buildCatChips();
 }
 
-// ===== CARTEIRAS (CRUD) =====
+// ===== CARTEIRAS (CRUD + edição) =====
 function selTipoCarteira(tipo) {
   state.tipoCarteiraSel = tipo;
   document.getElementById('carteira-tipo-conta').classList.toggle('sel', tipo === 'conta');
@@ -1435,16 +1664,51 @@ function renderCarteiraModalList() {
     return '<div class="lanc-item" style="padding:10px 0">' +
       '<div class="lanc-ico" style="background:' + c.cor + '22"><i class="ti ' + icon + '" style="color:' + c.cor + '"></i></div>' +
       '<div class="lanc-info"><div class="lanc-nome">' + c.nome + '</div><div class="lanc-cat">' + (c.tipo === 'cartao' ? 'Cartão de crédito' : 'Conta / dinheiro') + (c.padrao ? ' · padrão' : '') + '</div></div>' +
-      delBtn +
+      '<div class="lanc-actions">' +
+        '<button class="lanc-edit" onclick="abrirEdicaoCarteira(\'' + c.id + '\')"><i class="ti ti-pencil"></i></button>' +
+        delBtn +
+      '</div>' +
     '</div>';
   }).join('');
 }
 
+function abrirEdicaoCarteira(id) {
+  var c = getCarteiraById(id);
+  if (!c) return;
+  document.getElementById('carteira-form-title').textContent = 'Editar carteira';
+  document.getElementById('carteira-edit-id').value = c.id;
+  document.getElementById('carteira-nome').value = c.nome;
+  selTipoCarteira(c.tipo);
+  if (c.tipo === 'cartao') {
+    document.getElementById('carteira-limite').value = c.limite || '';
+    document.getElementById('carteira-fechamento').value = c.fechamento || '';
+    document.getElementById('carteira-vencimento').value = c.vencimento || '';
+  }
+  var chips = document.querySelectorAll('#carteira-cor-chips .chip');
+  for (var i = 0; i < chips.length; i++) {
+    chips[i].classList.toggle('sel', chips[i].getAttribute('data-cor') === c.cor);
+  }
+  state.corCarteiraSel = c.cor;
+  document.getElementById('btn-salvar-carteira').innerHTML = '<i class="ti ti-check"></i> Salvar alterações';
+}
+
+function resetFormCarteira() {
+  document.getElementById('carteira-form-title').textContent = 'Nova carteira';
+  document.getElementById('carteira-edit-id').value = '';
+  document.getElementById('carteira-nome').value = '';
+  document.getElementById('carteira-limite').value = '';
+  document.getElementById('carteira-fechamento').value = '';
+  document.getElementById('carteira-vencimento').value = '';
+  document.getElementById('btn-salvar-carteira').innerHTML = '<i class="ti ti-check"></i> Salvar carteira';
+  selTipoCarteira('conta');
+}
+
 async function salvarCarteira() {
+  var editId = document.getElementById('carteira-edit-id').value;
   var nome = document.getElementById('carteira-nome').value.trim();
   if (!nome) { alert('Digite um nome para a carteira.'); return; }
 
-  var payload = { user_id: currentUser.id, nome: nome, tipo: state.tipoCarteiraSel, cor: state.corCarteiraSel };
+  var payload = { nome: nome, tipo: state.tipoCarteiraSel, cor: state.corCarteiraSel };
 
   if (state.tipoCarteiraSel === 'cartao') {
     var limite = parseFloat(document.getElementById('carteira-limite').value);
@@ -1454,21 +1718,36 @@ async function salvarCarteira() {
     payload.limite = limite;
     payload.dia_fechamento = fechamento;
     payload.dia_vencimento = vencimento;
+  } else {
+    payload.limite = null;
+    payload.dia_fechamento = null;
+    payload.dia_vencimento = null;
   }
 
-  var result = await sb.from('carteiras').insert(payload).select().single();
+  var result;
+  if (editId) {
+    result = await sb.from('carteiras').update(payload).eq('id', editId).eq('user_id', currentUser.id).select().single();
+  } else {
+    payload.user_id = currentUser.id;
+    result = await sb.from('carteiras').insert(payload).select().single();
+  }
+
   if (result.error) { alert('Erro ao salvar carteira: ' + result.error.message); return; }
 
-  var inserted = result.data;
-  state.carteiras.push({ id: inserted.id, nome: inserted.nome, tipo: inserted.tipo, cor: inserted.cor, limite: inserted.limite ? parseFloat(inserted.limite) : null, fechamento: inserted.dia_fechamento, vencimento: inserted.dia_vencimento, padrao: inserted.padrao });
+  var saved = result.data;
+  var novaCarteira = { id: saved.id, nome: saved.nome, tipo: saved.tipo, cor: saved.cor, limite: saved.limite ? parseFloat(saved.limite) : null, fechamento: saved.dia_fechamento, vencimento: saved.dia_vencimento, padrao: saved.padrao };
 
-  document.getElementById('carteira-nome').value = '';
-  document.getElementById('carteira-limite').value = '';
-  document.getElementById('carteira-fechamento').value = '';
-  document.getElementById('carteira-vencimento').value = '';
+  if (editId) {
+    state.carteiras = state.carteiras.map(function(c){ return c.id === editId ? novaCarteira : c; });
+  } else {
+    state.carteiras.push(novaCarteira);
+  }
+
+  resetFormCarteira();
   renderCarteiraModalList();
   renderCarteiraTabs();
   buildCarteiraSelectNew();
+  if (currentMainTab === 'cartoes') renderCartoesList();
 }
 
 async function delCarteira(id) {
@@ -1481,6 +1760,41 @@ async function delCarteira(id) {
   renderCarteiraModalList();
   renderLancScreen();
   renderDash();
+}
+
+function abrirModalCarteiraComoCartao() {
+  resetFormCarteira();
+  selTipoCarteira('cartao');
+  openModal('modal-carteira');
+}
+
+// ===== ABA CARTÕES (visão dedicada) =====
+function renderCartoesList() {
+  var el = document.getElementById('cartoes-list');
+  var cartoes = state.carteiras.filter(function(c){ return c.tipo === 'cartao'; });
+  if (!cartoes.length) {
+    el.innerHTML = '<div class="empty-state"><i class="ti ti-credit-card-off"></i>Nenhum cartão cadastrado</div>';
+    return;
+  }
+  el.innerHTML = cartoes.map(function(c){
+    var fatura = getFaturaCarteira(c.id, state.currentMonth, state.currentYear);
+    var pctLimite = c.limite > 0 ? Math.min(Math.round(fatura / c.limite * 100), 100) : 0;
+    return '<div class="carteira-card" style="background:linear-gradient(135deg, ' + c.cor + ', ' + c.cor + 'cc)">' +
+      '<button class="carteira-del" onclick="abrirEdicaoCarteiraECartao(\'' + c.id + '\')" style="background:rgba(255,255,255,.2);border:none;color:#fff;cursor:pointer;font-size:16px;padding:5px 7px;border-radius:8px;position:absolute;top:14px;right:50px"><i class="ti ti-pencil"></i></button>' +
+      '<button class="carteira-del" onclick="delCarteira(\'' + c.id + '\')" style="background:rgba(255,255,255,.2);border:none;color:#fff;cursor:pointer;font-size:16px;padding:5px 7px;border-radius:8px;position:absolute;top:14px;right:14px"><i class="ti ti-trash"></i></button>' +
+      '<div class="carteira-top"><div><div class="carteira-nome">' + c.nome + '</div>' +
+      '<div class="carteira-datas">Fecha dia ' + c.fechamento + ' · Vence dia ' + c.vencimento + '</div></div>' +
+      '<i class="ti ti-credit-card" style="font-size:26px;opacity:.7"></i></div>' +
+      '<div class="carteira-fatura-lbl">Fatura do mês</div><div class="carteira-fatura-val">' + fmt(fatura) + '</div>' +
+      '<div class="carteira-limite-bar-bg"><div class="carteira-limite-bar-fill" style="width:' + pctLimite + '%"></div></div>' +
+      '<div class="carteira-limite-txt"><span>' + pctLimite + '% do limite</span><span>Limite: ' + fmt(c.limite) + '</span></div></div>';
+  }).join('');
+}
+
+function abrirEdicaoCarteiraECartao(id) {
+  abrirEdicaoCarteira(id);
+  openModal('modal-carteira');
+  renderCarteiraModalList();
 }
 
 // ===== ORÇAMENTO =====
@@ -1545,7 +1859,46 @@ async function salvarOrc() {
   renderOrc();
 }
 
-// ===== DÍVIDAS =====
+// ===== DÍVIDAS (com tipos editáveis) =====
+function buildDividaTipoSelect() {
+  var sel = document.getElementById('divida-tipo');
+  sel.innerHTML = state.tiposDivida.map(function(t){ return '<option value="' + t.id + '">' + t.nome + '</option>'; }).join('');
+}
+
+function getTipoDividaNome(id) {
+  for (var i = 0; i < state.tiposDivida.length; i++) if (state.tiposDivida[i].id === id) return state.tiposDivida[i].nome;
+  return 'Outro';
+}
+
+function renderTiposDividaList() {
+  var el = document.getElementById('tipos-divida-list');
+  el.innerHTML = state.tiposDivida.map(function(t){
+    return '<div class="lanc-item" style="padding:8px 0">' +
+      '<div class="lanc-info"><input type="text" value="' + t.nome + '" onblur="renomearTipoDivida(\'' + t.id + '\', this.value)" style="border:none;background:transparent;padding:4px 0;font-size:14px"></div>' +
+    '</div>';
+  }).join('');
+}
+
+function addTipoDivida() {
+  var inp = document.getElementById('novo-tipo-divida');
+  var v = inp.value.trim();
+  if (!v) return;
+  var id = 'custom_' + Date.now();
+  state.tiposDivida.push({ id: id, nome: v });
+  renderTiposDividaList();
+  buildDividaTipoSelect();
+  inp.value = '';
+}
+
+function renomearTipoDivida(id, novoNome) {
+  novoNome = novoNome.trim();
+  if (!novoNome) return;
+  state.tiposDivida = state.tiposDivida.map(function(t){ return t.id === id ? { id: id, nome: novoNome } : t; });
+  renderTiposDividaList();
+  buildDividaTipoSelect();
+  renderDividas();
+}
+
 function renderDividas() {
   var el = document.getElementById('divida-list');
   if (!state.dividas.length) {
@@ -1556,8 +1909,10 @@ function renderDividas() {
     var pct = d.total > 0 ? Math.min(Math.round(d.pago / d.total * 100), 100) : 0;
     var restante = d.total - d.pago;
     var fimFmt = d.fim ? new Date(d.fim + 'T12:00:00').toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' }) : '—';
-    var tagLabel = TIPO_DIVIDA_LABELS[d.tipo] || 'Outro';
-    var html = '<div class="divida-card"><button class="divida-del" onclick="delDivida(\'' + d.id + '\')"><i class="ti ti-trash"></i></button>' +
+    var tagLabel = getTipoDividaNome(d.tipo);
+    var html = '<div class="divida-card"><div class="divida-actions">' +
+      '<button class="lanc-edit" onclick="abrirEdicaoDivida(\'' + d.id + '\')"><i class="ti ti-pencil"></i></button>' +
+      '<button class="lanc-del" onclick="delDivida(\'' + d.id + '\')"><i class="ti ti-trash"></i></button></div>' +
       '<div class="divida-tag">' + tagLabel + '</div>' +
       '<div class="divida-top"><div><div class="divida-nome">' + d.nome + '</div>' +
       '<div class="divida-sub">Total: ' + fmt(d.total) + ' · Restante: ' + fmt(restante) + '</div></div>' +
@@ -1571,7 +1926,27 @@ function renderDividas() {
   }).join('');
 }
 
+function abrirEdicaoDivida(id) {
+  var d = null;
+  for (var i = 0; i < state.dividas.length; i++) if (state.dividas[i].id === id) d = state.dividas[i];
+  if (!d) return;
+  buildDividaTipoSelect();
+  document.getElementById('divida-tipo').value = d.tipo;
+  document.getElementById('divida-nome').value = d.nome;
+  document.getElementById('divida-total').value = d.total;
+  document.getElementById('divida-pago').value = d.pago;
+  document.getElementById('divida-parcela').value = d.parcela || '';
+  document.getElementById('divida-juros').value = d.juros || '';
+  document.getElementById('divida-inicio').value = d.inicio || '';
+  document.getElementById('divida-fim').value = d.fim || '';
+  document.querySelector('#modal-divida [onclick="salvarDivida()"]').setAttribute('data-edit-id', id);
+  openModal('modal-divida');
+}
+
 async function salvarDivida() {
+  var btn = document.querySelector('#modal-divida [onclick="salvarDivida()"]');
+  var editId = btn.getAttribute('data-edit-id');
+
   var tipo = document.getElementById('divida-tipo').value;
   var nome = document.getElementById('divida-nome').value.trim();
   var total = parseFloat(document.getElementById('divida-total').value);
@@ -1583,21 +1958,32 @@ async function salvarDivida() {
 
   if (!nome || !total) { alert('Preencha nome e valor total!'); return; }
 
-  var result = await sb.from('dividas').insert({
-    user_id: currentUser.id, tipo: tipo, nome: nome, valor_total: total, valor_pago: pago,
-    parcela_mensal: parcela, taxa_juros: juros, data_inicio: inicio, data_previsao_fim: fim
-  }).select().single();
+  var payload = { tipo: tipo, nome: nome, valor_total: total, valor_pago: pago, parcela_mensal: parcela, taxa_juros: juros, data_inicio: inicio, data_previsao_fim: fim };
+  var result;
+  if (editId) {
+    result = await sb.from('dividas').update(payload).eq('id', editId).eq('user_id', currentUser.id).select().single();
+  } else {
+    payload.user_id = currentUser.id;
+    result = await sb.from('dividas').insert(payload).select().single();
+  }
 
   if (result.error) { alert('Erro ao salvar dívida: ' + result.error.message); return; }
 
-  var inserted = result.data;
-  state.dividas.push({
-    id: inserted.id, nome: inserted.nome, tipo: inserted.tipo, total: parseFloat(inserted.valor_total), pago: parseFloat(inserted.valor_pago),
-    parcela: inserted.parcela_mensal ? parseFloat(inserted.parcela_mensal) : null,
-    juros: inserted.taxa_juros ? parseFloat(inserted.taxa_juros) : null,
-    inicio: inserted.data_inicio, fim: inserted.data_previsao_fim
-  });
+  var saved = result.data;
+  var novaDivida = {
+    id: saved.id, nome: saved.nome, tipo: saved.tipo, total: parseFloat(saved.valor_total), pago: parseFloat(saved.valor_pago),
+    parcela: saved.parcela_mensal ? parseFloat(saved.parcela_mensal) : null,
+    juros: saved.taxa_juros ? parseFloat(saved.taxa_juros) : null,
+    inicio: saved.data_inicio, fim: saved.data_previsao_fim
+  };
 
+  if (editId) {
+    state.dividas = state.dividas.map(function(d){ return d.id === editId ? novaDivida : d; });
+  } else {
+    state.dividas.push(novaDivida);
+  }
+
+  btn.removeAttribute('data-edit-id');
   closeModal('modal-divida');
   ['divida-nome','divida-total','divida-pago','divida-parcela','divida-juros','divida-inicio','divida-fim'].forEach(function(id){ document.getElementById(id).value = ''; });
   renderDividas();
@@ -1611,7 +1997,13 @@ async function delDivida(id) {
   renderDividas();
 }
 
-// ===== METAS =====
+// ===== METAS (com tipo formal) =====
+function selTipoMeta(tipo) {
+  state.tipoMetaSel = tipo;
+  document.getElementById('meta-tipo-objetivo').classList.toggle('sel', tipo === 'objetivo');
+  document.getElementById('meta-tipo-reserva').classList.toggle('sel', tipo === 'reserva_emergencia');
+}
+
 function setMetaPeriod(p, btn) {
   state.metaPeriod = p;
   var tabs = document.querySelectorAll('#s-meta .ptab');
@@ -1630,7 +2022,9 @@ function renderMeta() {
   el.innerHTML = metas.map(function(m){
     var pct = Math.min(Math.round(m.atual / m.total * 100), 100);
     var prazoFmt = m.prazo ? new Date(m.prazo + 'T12:00:00').toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' }) : '';
+    var tagHtml = m.tipoMeta === 'reserva_emergencia' ? '<div class="meta-tag"><i class="ti ti-shield-check" style="font-size:11px;vertical-align:-1px"></i> Reserva</div>' : '';
     return '<div class="meta-card"><button class="meta-del" onclick="delMeta(\'' + m.id + '\')"><i class="ti ti-trash"></i></button>' +
+      tagHtml +
       '<div class="meta-top"><div><div class="meta-nome">' + m.nome + '</div>' +
       '<div class="meta-sub">Meta: ' + fmt(m.total) + (prazoFmt ? ' · ' + prazoFmt : '') + '</div></div>' +
       '<div class="meta-pct">' + pct + '%</div></div>' +
@@ -1649,18 +2043,19 @@ async function salvarMeta() {
   if (!nome || !total) { alert('Preencha nome e valor total!'); return; }
 
   var result = await sb.from('metas').insert({
-    user_id: currentUser.id, nome: nome, valor_total: total, valor_atual: atual, prazo: prazo, periodo: periodo
+    user_id: currentUser.id, nome: nome, valor_total: total, valor_atual: atual, prazo: prazo, periodo: periodo, tipo_meta: state.tipoMetaSel
   }).select().single();
 
   if (result.error) { alert('Erro ao salvar meta: ' + result.error.message); return; }
 
   var inserted = result.data;
-  state.metas.push({ id: inserted.id, nome: inserted.nome, total: parseFloat(inserted.valor_total), atual: parseFloat(inserted.valor_atual), prazo: inserted.prazo, periodo: inserted.periodo });
+  state.metas.push({ id: inserted.id, nome: inserted.nome, total: parseFloat(inserted.valor_total), atual: parseFloat(inserted.valor_atual), prazo: inserted.prazo, periodo: inserted.periodo, tipoMeta: inserted.tipo_meta });
   closeModal('modal-meta');
   document.getElementById('meta-nome').value = '';
   document.getElementById('meta-total').value = '';
   document.getElementById('meta-atual').value = '';
   document.getElementById('meta-prazo').value = '';
+  selTipoMeta('objetivo');
   renderMeta();
 }
 
@@ -1672,7 +2067,198 @@ async function delMeta(id) {
   renderMeta();
 }
 
+// ===== INVESTIMENTOS =====
+function getMovimentosByInvest(investId) {
+  return state.movimentos.filter(function(m){ return m.investimentoId === investId; });
+}
+
+function calcularInvestResumo(investId) {
+  var movs = getMovimentosByInvest(investId);
+  var aportes = movs.filter(function(m){ return m.tipo === 'aporte'; }).reduce(function(a,m){ return a+m.valor; }, 0);
+  var retiradas = movs.filter(function(m){ return m.tipo === 'retirada'; }).reduce(function(a,m){ return a+m.valor; }, 0);
+  var rendimentos = movs.filter(function(m){ return m.tipo === 'rendimento'; }).reduce(function(a,m){ return a+m.valor; }, 0);
+  var valorAtual = aportes - retiradas + rendimentos;
+  var totalInvestido = aportes - retiradas;
+  var rentabilidadePct = totalInvestido > 0 ? (rendimentos / totalInvestido * 100) : 0;
+  return { aportes: aportes, retiradas: retiradas, rendimentos: rendimentos, valorAtual: valorAtual, rentabilidadePct: rentabilidadePct };
+}
+
+function renderInvestimentos() {
+  var totalGeral = 0, totalRendimentoGeral = 0, totalInvestidoGeral = 0;
+  state.investimentos.forEach(function(i){
+    var r = calcularInvestResumo(i.id);
+    totalGeral += r.valorAtual;
+    totalRendimentoGeral += r.rendimentos;
+    totalInvestidoGeral += r.aportes - r.retiradas;
+  });
+  var rentGeralPct = totalInvestidoGeral > 0 ? (totalRendimentoGeral / totalInvestidoGeral * 100) : 0;
+
+  document.getElementById('invest-summary').innerHTML =
+    '<div style="font-size:11px;color:#aaa;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Patrimônio investido</div>' +
+    '<div style="font-size:26px;font-weight:700;color:#1a1a2e">' + fmt(totalGeral) + '</div>' +
+    '<div style="font-size:13px;margin-top:6px;color:' + (rentGeralPct >= 0 ? '#3B6D11' : '#A32D2D') + '">' +
+    (rentGeralPct >= 0 ? '+' : '') + rentGeralPct.toFixed(2) + '% de rentabilidade total</div>';
+
+  var el = document.getElementById('invest-list');
+  if (!state.investimentos.length) {
+    el.innerHTML = '<div class="empty-state"><i class="ti ti-chart-line"></i>Nenhum investimento cadastrado</div>';
+    return;
+  }
+
+  el.innerHTML = state.investimentos.map(function(i){
+    var r = calcularInvestResumo(i.id);
+    var cls = r.rentabilidadePct >= 0 ? 'pos' : 'neg';
+    var sinal = r.rentabilidadePct >= 0 ? '+' : '';
+    return '<div class="invest-card" onclick="abrirDetalheInvest(\'' + i.id + '\')">' +
+      '<div class="invest-top"><div><div class="invest-nome">' + i.nome + '</div>' +
+      '<div class="invest-tag">' + (INVEST_TIPO_LABELS[i.tipo] || 'Outro') + '</div></div>' +
+      '<div class="invest-rent"><div class="invest-rent-val ' + cls + '">' + sinal + r.rentabilidadePct.toFixed(2) + '%</div>' +
+      '<div class="invest-rent-lbl">rentabilidade</div></div></div>' +
+      '<div class="invest-valor-atual">' + fmt(r.valorAtual) + '</div>' +
+      '<div class="invest-resumo-row"><span>Investido: ' + fmt(r.aportes - r.retiradas) + '</span><span>Rendeu: ' + fmt(r.rendimentos) + '</span></div>' +
+      '</div>';
+  }).join('');
+}
+
+async function salvarInvestimento() {
+  var nome = document.getElementById('invest-nome').value.trim();
+  var tipo = document.getElementById('invest-tipo').value;
+  var corretora = document.getElementById('invest-corretora').value.trim() || null;
+  var aporteInicial = parseFloat(document.getElementById('invest-aporte-inicial').value);
+  var dataInicial = document.getElementById('invest-data-inicial').value;
+
+  if (!nome) { alert('Digite o nome do investimento.'); return; }
+
+  var result = await sb.from('investimentos').insert({ user_id: currentUser.id, nome: nome, tipo: tipo, corretora: corretora }).select().single();
+  if (result.error) { alert('Erro ao salvar investimento: ' + result.error.message); return; }
+
+  var inserted = result.data;
+  state.investimentos.push({ id: inserted.id, nome: inserted.nome, tipo: inserted.tipo, corretora: inserted.corretora });
+
+  if (aporteInicial && dataInicial) {
+    var movResult = await sb.from('movimentacoes_investimento').insert({
+      user_id: currentUser.id, investimento_id: inserted.id, tipo: 'aporte', valor: aporteInicial, data: dataInicial
+    }).select().single();
+    if (movResult.data) {
+      state.movimentos.push({ id: movResult.data.id, investimentoId: inserted.id, tipo: 'aporte', valor: aporteInicial, data: dataInicial });
+    }
+  }
+
+  closeModal('modal-invest');
+  document.getElementById('invest-nome').value = '';
+  document.getElementById('invest-corretora').value = '';
+  document.getElementById('invest-aporte-inicial').value = '';
+  renderInvestimentos();
+}
+
+function abrirDetalheInvest(id) {
+  currentInvestId = id;
+  var inv = null;
+  for (var i = 0; i < state.investimentos.length; i++) if (state.investimentos[i].id === id) inv = state.investimentos[i];
+  if (!inv) return;
+
+  document.getElementById('invest-detalhe-nome').textContent = inv.nome;
+  document.getElementById('invest-detalhe-sub').textContent = (INVEST_TIPO_LABELS[inv.tipo] || 'Outro') + (inv.corretora ? ' · ' + inv.corretora : '');
+  renderInvestDetalhe();
+  nav('invest-detalhe');
+}
+
+function renderInvestDetalhe() {
+  var r = calcularInvestResumo(currentInvestId);
+  var cls = r.rentabilidadePct >= 0 ? 'pos' : 'neg';
+  var sinal = r.rentabilidadePct >= 0 ? '+' : '';
+
+  document.getElementById('invest-detalhe-resumo').innerHTML =
+    '<div style="font-size:11px;color:#aaa;text-transform:uppercase;letter-spacing:.04em">Valor atual</div>' +
+    '<div style="font-size:26px;font-weight:700;color:#1a1a2e;margin-bottom:8px">' + fmt(r.valorAtual) + '</div>' +
+    '<div class="invest-resumo-row"><span>Investido: ' + fmt(r.aportes - r.retiradas) + '</span>' +
+    '<span style="color:' + (r.rentabilidadePct >= 0 ? '#3B6D11' : '#A32D2D') + '">Rentabilidade: ' + sinal + r.rentabilidadePct.toFixed(2) + '%</span></div>';
+
+  // gráfico de evolução acumulada
+  var movs = getMovimentosByInvest(currentInvestId).slice().sort(function(a,b){ return new Date(a.data) - new Date(b.data); });
+  var labels = [], valores = [];
+  var acumulado = 0;
+  movs.forEach(function(m){
+    if (m.tipo === 'aporte' || m.tipo === 'rendimento') acumulado += m.valor;
+    else acumulado -= m.valor;
+    var d = new Date(m.data + 'T12:00:00');
+    labels.push(d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }));
+    valores.push(acumulado);
+  });
+
+  if (investChartInst) investChartInst.destroy();
+  investChartInst = new Chart(document.getElementById('investChart'), {
+    type: 'line',
+    data: { labels: labels, datasets: [{ data: valores, borderColor: '#7F77DD', backgroundColor: 'rgba(127,119,221,0.1)', fill: true, tension: 0.3, pointRadius: 3 }] },
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { font: { size: 9 }, color: '#aaa' }, grid: { display: false } }, y: { ticks: { font: { size: 9 }, color: '#aaa', callback: function(v){ return 'R$' + v; } }, grid: { color: 'rgba(0,0,0,.04)' } } } }
+  });
+
+  var movsDesc = movs.slice().reverse();
+  var el = document.getElementById('invest-mov-list');
+  if (!movsDesc.length) {
+    el.innerHTML = '<div class="empty-state"><i class="ti ti-history"></i>Nenhuma movimentação ainda</div>';
+    return;
+  }
+  var tagLabels = { aporte: 'Aporte', retirada: 'Retirada', rendimento: 'Rendimento' };
+  el.innerHTML = movsDesc.map(function(m){
+    var d = new Date(m.data + 'T12:00:00');
+    var dataFmt = d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    var sinal = m.tipo === 'retirada' ? '-' : '+';
+    return '<div class="invest-mov-item">' +
+      '<span class="invest-mov-tag ' + m.tipo + '">' + tagLabels[m.tipo] + '</span>' +
+      '<div class="cartao-lanc-info" style="flex:1"><div class="cartao-lanc-cat">' + dataFmt + '</div></div>' +
+      '<div class="cartao-lanc-val">' + sinal + fmt(m.valor) + '</div>' +
+      '<button class="lanc-del" onclick="delMovimento(\'' + m.id + '\')"><i class="ti ti-trash"></i></button>' +
+    '</div>';
+  }).join('');
+}
+
+function abrirModalMovimento(tipo) {
+  currentMovimentoTipo = tipo;
+  var titles = { aporte: 'Novo aporte', retirada: 'Nova retirada', rendimento: 'Novo rendimento' };
+  document.getElementById('modal-movimento-title').firstChild.textContent = titles[tipo] + ' ';
+  document.getElementById('movimento-data').value = new Date().toISOString().split('T')[0];
+  document.getElementById('movimento-val').value = '';
+  openModal('modal-movimento');
+}
+
+async function salvarMovimento() {
+  var val = parseFloat(document.getElementById('movimento-val').value);
+  var data = document.getElementById('movimento-data').value;
+  if (!val || !data) { alert('Preencha valor e data.'); return; }
+
+  var btn = document.getElementById('btn-salvar-movimento');
+  btn.disabled = true;
+
+  var result = await sb.from('movimentacoes_investimento').insert({
+    user_id: currentUser.id, investimento_id: currentInvestId, tipo: currentMovimentoTipo, valor: val, data: data
+  }).select().single();
+
+  btn.disabled = false;
+
+  if (result.error) { alert('Erro ao salvar: ' + result.error.message); return; }
+
+  var inserted = result.data;
+  state.movimentos.push({ id: inserted.id, investimentoId: inserted.investimento_id, tipo: inserted.tipo, valor: parseFloat(inserted.valor), data: inserted.data });
+
+  closeModal('modal-movimento');
+  renderInvestDetalhe();
+}
+
+async function delMovimento(id) {
+  if (!confirm('Excluir esta movimentação?')) return;
+  var result = await sb.from('movimentacoes_investimento').delete().eq('id', id).eq('user_id', currentUser.id);
+  if (result.error) { alert('Erro ao excluir: ' + result.error.message); return; }
+  state.movimentos = state.movimentos.filter(function(m){ return m.id !== id; });
+  renderInvestDetalhe();
+}
+
 // ===== IMPORTAÇÃO =====
+function openModalImport() {
+  buildImportCarteiraSelect();
+  openModal('modal-import');
+}
+
 function fecharModalImport() {
   closeModal('modal-import');
   voltarStepImport();
@@ -1937,9 +2523,11 @@ async function init() {
   buildMonthSelect();
   var hoje = new Date().toISOString().split('T')[0];
   document.getElementById('new-data').value = hoje;
+  document.getElementById('invest-data-inicial').value = hoje;
   selTipo('entrada');
   buildCatChips();
-  renderCatList();
+  buildDividaTipoSelect();
+  renderTiposDividaList();
 
   var sessionRes = await sb.auth.getSession();
   var session = sessionRes.data.session;
@@ -1951,6 +2539,8 @@ async function init() {
     renderCatList();
     renderCarteiraModalList();
     buildImportCarteiraSelect();
+    buildDividaTipoSelect();
+    renderTiposDividaList();
     showApp();
   } else {
     showAuth('login');
@@ -1960,7 +2550,8 @@ async function init() {
     if (event === 'SIGNED_IN' && !currentUser) {
       currentUser = session2.user;
       loadUserData().then(function(){
-        buildCatChips(); renderCatList(); renderCarteiraModalList(); buildImportCarteiraSelect(); showApp();
+        buildCatChips(); renderCatList(); renderCarteiraModalList(); buildImportCarteiraSelect();
+        buildDividaTipoSelect(); renderTiposDividaList(); showApp();
       });
     }
   });
