@@ -1,4 +1,4 @@
-const CACHE = 'ancora-v1';
+const CACHE = 'prosperite-v1';
 const FILES = ['./', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', e => {

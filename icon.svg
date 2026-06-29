@@ -2,24 +2,38 @@
   <rect width="512" height="512" rx="112" fill="#7F77DD"/>
   <rect width="512" height="512" rx="112" fill="#EEEDFE" opacity="0.08"/>
 
-  <!-- Símbolo âncora estilizado -->
-  <!-- Círculo do topo -->
-  <circle cx="256" cy="148" r="36" fill="none" stroke="#fff" stroke-width="22"/>
+  <!-- Lua crescente, formada por dois círculos sobrepostos -->
+  <mask id="moonMask">
+    <rect width="512" height="512" fill="black"/>
+    <circle cx="246" cy="266" r="108" fill="white"/>
+    <circle cx="296" cy="236" r="92" fill="black"/>
+  </mask>
+  <circle cx="246" cy="266" r="108" fill="#fff" mask="url(#moonMask)"/>
 
-  <!-- Haste vertical -->
-  <line x1="256" y1="184" x2="256" y2="360" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+  <!-- Estrela grande, ao lado superior direito da lua -->
+  <path d="M 352 118
+           L 364 154
+           L 400 166
+           L 364 178
+           L 352 214
+           L 340 178
+           L 304 166
+           L 340 154
+           Z"
+        fill="#fff"/>
 
-  <!-- Barra horizontal -->
-  <line x1="176" y1="210" x2="336" y2="210" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
+  <!-- Estrelinha pequena, abaixo e à direita -->
+  <path d="M 376 296
+           L 382 312
+           L 398 318
+           L 382 324
+           L 376 340
+           L 370 324
+           L 354 318
+           L 370 312
+           Z"
+        fill="#fff" opacity="0.85"/>
 
-  <!-- Braços curvos da âncora -->
-  <path d="M256 360 Q190 360 170 310" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
-  <path d="M256 360 Q322 360 342 310" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round"/>
-
-  <!-- Pontas dos braços -->
-  <circle cx="163" cy="300" r="16" fill="#fff"/>
-  <circle cx="349" cy="300" r="16" fill="#fff"/>
-
-  <!-- Brilho sutil no topo -->
+  <!-- Brilho sutil no fundo -->
   <ellipse cx="256" cy="120" rx="180" ry="60" fill="#fff" opacity="0.06"/>
 </svg>

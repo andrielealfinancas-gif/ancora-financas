@@ -1,8 +1,8 @@
 {
-  "name": "Âncora — Finanças Pessoais",
-  "short_name": "Âncora",
+  "name": "Prosperité — Finanças Pessoais",
+  "short_name": "Prosperité",
   "description": "Seu app de finanças pessoais",
-  "start_url": "/ancora-financas/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#7F77DD",
